@@ -1,0 +1,91 @@
+---
+import '../styles/global.css';
+
+const photographs = [
+  {
+    src: 'https://images.unsplash.com/photo-1783315943625-6c00dc4b265b?auto=format&fit=crop&fm=jpg&q=82&w=1800',
+    alt: 'Concrete courtyard seen from above, cut by geometric light and greenery',
+    title: 'Courtyard',
+    place: 'Paris, France',
+    year: '2026',
+    className: 'photograph photograph--wide'
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1760406312450-0aa2745d2d36?auto=format&fit=crop&fm=jpg&q=82&w=1800',
+    alt: 'Dark lake and pine trees beneath misty mountains',
+    title: 'Still Water',
+    place: 'Somewhere North',
+    year: '2025',
+    className: 'photograph photograph--portrait photograph--left'
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1723101174263-34ecf3edde21?auto=format&fit=crop&fm=jpg&q=82&w=1800',
+    alt: 'Blurred lights and traffic on a city street at night',
+    title: 'After Midnight',
+    place: 'City Study',
+    year: '2024',
+    className: 'photograph photograph--portrait photograph--right'
+  }
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta
+      name="description"
+      content="Selected photography by Muyang Chen — quiet studies of space, distance, and light."
+    />
+    <meta name="theme-color" content="#f1efe9" />
+    <title>Muyang Chen — Photography</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="wordmark" href="#top" aria-label="Back to top">Muyang Chen</a>
+      <nav aria-label="Main navigation">
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="intro" aria-labelledby="intro-title">
+        <p class="eyebrow">Selected photographs · 2024—2026</p>
+        <h1 id="intro-title">Quiet observations<br />of space and light.</h1>
+        <p class="intro-note">Personal work from places passed through.</p>
+      </section>
+
+      <section class="gallery" id="work" aria-label="Selected photographs">
+        {photographs.map((photo, index) => (
+          <figure class={photo.className}>
+            <div class="image-frame">
+              <span class="index" aria-hidden="true">0{index + 1}</span>
+              <img src={photo.src} alt={photo.alt} loading={index === 0 ? 'eager' : 'lazy'} />
+            </div>
+            <figcaption>
+              <span>{photo.title}</span>
+              <span>{photo.place}</span>
+              <span>{photo.year}</span>
+            </figcaption>
+          </figure>
+        ))}
+      </section>
+
+      <section class="about" id="about" aria-labelledby="about-title">
+        <p class="section-label" id="about-title">About</p>
+        <p class="about-copy">
+          I photograph the small pauses between destinations—shadows on concrete,
+          distant weather, and cities after dark.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2026 Muyang Chen</p>
+      <a href="mailto:chenmuyang@utexas.edu">Email</a>
+      <a href="#top">Back to top ↑</a>
+    </footer>
+  </body>
+</html>
